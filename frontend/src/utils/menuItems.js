@@ -1,6 +1,10 @@
 import {dashboard, expenses, transactions, trend} from '../utils/Icons'
-
+const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+};
 export const menuItems = [
+    
     {
         id: 1,
         title: 'Dashboard',
@@ -24,5 +28,11 @@ export const menuItems = [
         title: "Expenses",
         icon: expenses,
         link: "/dashboard",
+    },
+    {
+        id: 5,
+        title: "Logout",
+        icon: expenses,
+        link: {handleLogout},
     },
 ]

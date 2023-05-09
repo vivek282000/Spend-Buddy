@@ -1,17 +1,15 @@
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
 import styled from 'styled-components'
 import avatar from '../../img/avatar.png'
-import { signout } from '../../utils/Icons'
 import { menuItems } from '../../utils/menuItems'
 
 function Navigation({active, setActive}) {
-    
     return (
         <NavStyled>
             <div className="user-con">
                 <img src={avatar} alt="" />
                 <div className="text">
-                    <h2>Mike</h2>
+                    <h2>Vivek</h2>
                     <p>Your Money</p>
                 </div>
             </div>
@@ -27,11 +25,6 @@ function Navigation({active, setActive}) {
                     </li>
                 })}
             </ul>
-            <div className="bottom-nav">
-                <li>
-                    {signout} Sign Out
-                </li>
-            </div>
         </NavStyled>
     )
 }
@@ -48,6 +41,32 @@ const NavStyled = styled.nav`
     flex-direction: column;
     justify-content: space-between;
     gap: 2rem;
+    .navbar {
+        width: 100%;
+        height: 70px;
+        background-color: #3bb19b;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .navbar h1 {
+        color: white;
+        font-size: 25px;
+        margin-left: 20px;
+    }
+    .white_btn {
+        border: none;
+        outline: none;
+        padding: 12px 0;
+        background-color: white;
+        border-radius: 20px;
+        width: 120px;
+        font-weight: bold;
+        font-size: 14px;
+        cursor: pointer;
+        margin-right: 20px;
+    }
     .user-con{
         height: 100px;
         display: flex;
