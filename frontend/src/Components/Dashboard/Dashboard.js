@@ -44,25 +44,38 @@ function Dashboard() {
                     </div>
                     <div className="history-con">
                         <History />
-                        <h2 className="salary-title">Min <span>Salary</span>Max</h2>
+                        <h2 className="salary-title">Min <span>Income</span>Max</h2>
                         <div className="salary-item">
                             <p>
-                                ${Math.min(...incomes.map(item => item.amount))}
+                            ₹{Math.min(...incomes.map(item => item.amount))}
                             </p>
                             <p>
-                                ${Math.max(...incomes.map(item => item.amount))}
+                            ₹{Math.max(...incomes.map(item => item.amount))}
                             </p>
                         </div>
                         <h2 className="salary-title">Min <span>Expense</span>Max</h2>
                         <div className="salary-item">
                             <p>
-                                ${Math.min(...expenses.map(item => item.amount))}
+                            ₹{Math.min(...expenses.map(item => item.amount))}
                             </p>
                             <p>
-                                ${Math.max(...expenses.map(item => item.amount))}
+                            ₹{Math.max(...expenses.map(item => item.amount))}
                             </p>
                         </div>
+                        <div className="balance">
+                                <h2>Average Expense</h2>
+                                <p>
+                                ₹{Math.max(...expenses.map(item => item.amount))-Math.min(...expenses.map(item => item.amount))/2}
+                                </p>
+                        </div>
+                        <div className="balance">
+                                <h2>Average Income</h2>
+                                <p>
+                                ₹{Math.max(...incomes.map(item => item.amount))-Math.min(...incomes.map(item => item.amount))/2}
+                                </p>
+                        </div>
                     </div>
+                    
                 </div>
             </InnerLayout>
         </DashboardStyled>
@@ -85,8 +98,13 @@ const DashboardStyled = styled.div`
                 .income, .expense{
                     grid-column: span 2;
                 }
-                .income, .expense, .balance{
+                .income, .expense{
                     background: #FCF6F9;
+                    display: flex;
+                    
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
                     border: 2px solid #FFFFFF;
                     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
                     border-radius: 20px;
@@ -103,6 +121,11 @@ const DashboardStyled = styled.div`
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
+                    background: #FCF6F9;
+                    border: 2px solid #FFFFFF;
+                    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+                    border-radius: 20px;
+                    padding: 1rem;
                     p{
                         color: var(--color-green);
                         opacity: 0.6;
@@ -117,7 +140,7 @@ const DashboardStyled = styled.div`
             h2{
                 margin: 1rem 0;
                 display: flex;
-                align-items: center;
+                align-content: center;
                 justify-content: space-between;
             }
             .salary-title{
@@ -138,6 +161,24 @@ const DashboardStyled = styled.div`
                 p{
                     font-weight: 600;
                     font-size: 1.6rem;
+                }
+            }
+            .balance{
+                grid-column: 2/ 4;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background: #FCF6F9;
+                border: 2px solid #FFFFFF;
+                box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+                border-radius: 20px;
+                padding: 1rem;
+                margin-top : 20px;
+                p{
+                    color: var(--color-green);
+                    opacity: 0.6;
+                    font-size: 4.5rem;
                 }
             }
         }

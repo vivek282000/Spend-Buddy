@@ -11,7 +11,6 @@ import { useGlobalContext } from './context/globalContext';
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
 import { Route, Routes, Navigate } from "react-router-dom";
-import Main from "./Components/Main";
 function App() {
   const [active, setActive] = useState(1)
   const user = localStorage.getItem("token");
@@ -29,10 +28,11 @@ function App() {
         return <Expenses />
       case 5:
           return <Routes>
-          {user && <Route path="/" exact element={<Main />} />}
+          
           <Route path="/signup" exact element={<Signup />} />
           <Route path="/login" exact element={<Login />} />
-          <Route path="/" element={<Navigate replace to="/login" />} />
+          {user &&
+          <Route path="/" element={<Navigate replace to="/login" />} />}
         </Routes>
       default: 
         return <Dashboard />

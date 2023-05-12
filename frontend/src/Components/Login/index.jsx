@@ -1,12 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import styles from "./styles.module.css";
 
 const Login = () => {
 	const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
-
+	const navigate = useNavigate();
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
 	};
@@ -14,10 +14,12 @@ const Login = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const url = "http://localhost:5000/api/vi/auth";
+			const url = "http://localhost:5000/api/auth";
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data);
 			window.location = "/";
+			handleChange();
+			navigate("/Dashboard");
 		} catch (error) {
 			if (
 				error.response &&
@@ -55,14 +57,14 @@ const Login = () => {
 						/>
 						{error && <div className={styles.error_msg}>{error}</div>}
 						{/* <Link to="/Dashboard/Dashboard.js"> */}
-							<button type="submit" className={styles.green_btn}>
+							<button type="submit" className={styles.green_btn} onClick={handleSubmit}>
 							Log In
 						</button>
 						{/* </Link> */}
 					</form>
 				</div>
 				<div className={styles.right}>
-					<h1>New Here ?</h1>
+					<h1>New Here?</h1>
 					<Link to="/Signup">
 						<button type="button" className={styles.white_btn}>
 							Sign Up

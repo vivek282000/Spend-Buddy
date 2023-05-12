@@ -1,8 +1,10 @@
+
 import {dashboard, expenses, transactions, trend} from '../utils/Icons'
 const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.reload();
 };
+
 export const menuItems = [
     
     {
